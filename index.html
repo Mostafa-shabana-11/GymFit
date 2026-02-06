@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GymFit - حاسبة اللياقة البدنية </title>
+    <meta name="description"
+        content="احسب سعراتك الحرارية، نسبة الدهون، ومؤشر كتلة الجسم بدقة عالية. دليلك الشامل للياقة البدنية.">
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="GymFit - حاسبة اللياقة البدنية | Eng. Mostafa Shabana">
+    <meta property="og:description" content="احسب سعراتك الحرارية، نسبة الدهون، ومؤشر كتلة الجسم بدقة عالية.">
+    <meta property="og:site_name" content="GymFit">
+    <meta name="keywords" content="حاسبة سعرات, لياقة بدنية, جيم, كمال أجسام, تنشيف, تضخيم, BMI, نسبة الدهون">
+    <meta name="author" content="GymFit Team">
+    <meta name="theme-color" content="#00ff88">
+
+    <!-- Favicon -->
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💪</text></svg>">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">Gym<span class="highlight">Fit</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#calculators">الحاسبات</a></li>
+                <li><a href="#about">عن الموقع</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>اكتشف <span class="highlight">إمكانيات جسمك</span> الحقيقية</h1>
+            <p>أدوات دقيقة لحساب السعرات، نسبة الدهون، ومؤشر كتلة الجسم. ابدأ رحلة التغيير اليوم.</p>
+            <a href="#calculators" class="cta-button">ابدأ الحساب الآن</a>
+        </div>
+        <div class="hero-background"></div>
+    </section>
+
+    <!-- Calculators Section -->
+    <section id="calculators" class="calculators-section">
+        <div class="section-header">
+            <h2>أدوات اللياقة</h2>
+            <p>اختر الحاسبة التي تحتاجها</p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-target="calories">السعرات الحرارية</button>
+            <button class="tab-btn" data-target="body-fat">نسبة الدهون</button>
+            <button class="tab-btn" data-target="bmi">كتلة الجسم (BMI)</button>
+            <button class="tab-btn" data-target="food-calc">حاسبة الوجبات</button>
+        </div>
+
+        <div class="calculator-container">
+
+            <!-- Calorie Calculator -->
+            <div id="calories" class="calc-content active">
+                <h3>حاسبة السعرات الحرارية (TDEE)</h3>
+                <form id="calorie-form">
+                    <div class="form-group">
+                        <label>النوع</label>
+                        <div class="radio-group">
+                            <label class="radio-label"><input type="radio" name="gender" value="male" checked>
+                                ذكر</label>
+                            <label class="radio-label"><input type="radio" name="gender" value="female"> أنثى</label>
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <div class="form-group">
+                            <label for="age">العمر (سنة)</label>
+                            <input type="number" id="c-age" placeholder="25" required min="10" max="100">
+                        </div>
+                        <div class="form-group">
+                            <label for="weight">الوزن (كجم)</label>
+                            <input type="number" id="c-weight" placeholder="70" required min="30">
+                        </div>
+                        <div class="form-group">
+                            <label for="height">الطول (سم)</label>
+                            <input type="number" id="c-height" placeholder="175" required min="100">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="activity">مستوى النشاط</label>
+                        <select id="c-activity">
+                            <option value="1.2">قليل الحركة (مكتبي)</option>
+                            <option value="1.375">نشاط خفيف (تمرين 1-3 أيام)</option>
+                            <option value="1.55">نشاط متوسط (تمرين 3-5 أيام)</option>
+                            <option value="1.725">نشاط عالي (تمرين 6-7 أيام)</option>
+                            <option value="1.9">نشاط عالي جداً (رياضي محترف)</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="calc-btn">احسب السعرات</button>
+                </form>
+                <div id="calorie-result" class="result-box hidden">
+                    <!-- Results injected via JS -->
+                </div>
+            </div>
+
+            <!-- Body Fat Calculator -->
+            <div id="body-fat" class="calc-content">
+                <h3>حاسبة نسبة الدهون</h3>
+                <form id="fat-form">
+                    <div class="form-group">
+                        <label>النوع</label>
+                        <div class="radio-group">
+                            <label class="radio-label"><input type="radio" name="f-gender" value="male" checked>
+                                ذكر</label>
+                            <label class="radio-label"><input type="radio" name="f-gender" value="female"> أنثى</label>
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <div class="form-group">
+                            <label for="f-age">العمر</label>
+                            <input type="number" id="f-age" placeholder="25" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="f-weight">الوزن (كجم)</label>
+                            <input type="number" id="f-weight" placeholder="75" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="f-height">الطول (سم)</label>
+                            <input type="number" id="f-height" placeholder="175" required>
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <div class="form-group">
+                            <label for="f-neck">محيط الرقبة (سم)</label>
+                            <input type="number" id="f-neck" placeholder="38" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="f-waist">محيط الخصر (سم)</label>
+                            <input type="number" id="f-waist" placeholder="85" required>
+                        </div>
+                        <div class="form-group hidden" id="hip-group">
+                            <label for="f-hip">محيط الحوض (سم)</label>
+                            <input type="number" id="f-hip" placeholder="95">
+                        </div>
+                    </div>
+                    <button type="submit" class="calc-btn">احسب نسبة الدهون</button>
+                </form>
+                <div id="fat-result" class="result-box hidden"></div>
+            </div>
+
+            <!-- BMI Calculator -->
+            <div id="bmi" class="calc-content">
+                <h3>مؤشر كتلة الجسم (BMI)</h3>
+                <form id="bmi-form">
+                    <div class="input-row">
+                        <div class="form-group">
+                            <label for="b-weight">الوزن (كجم)</label>
+                            <input type="number" id="b-weight" placeholder="70" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="b-height">الطول (سم)</label>
+                            <input type="number" id="b-height" placeholder="175" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="calc-btn">احسب BMI</button>
+                </form>
+                <div id="bmi-result" class="result-box hidden"></div>
+            </div>
+
+            <!-- Food Calorie Calculator -->
+            <div id="food-calc" class="calc-content">
+                <h3>حاسبة سعرات الوجبات</h3>
+                <div class="food-calc-container">
+                    <div class="input-row">
+                        <div class="form-group">
+                            <label for="food-search">اختر الطعام</label>
+                            <select id="food-select">
+                                <option value="">-- اختر --</option>
+                                <optgroup label="بروتينات">
+                                    <option value="165">صدور دجاج (100 جم)</option>
+                                    <option value="250">لحم بقري (100 جم)</option>
+                                    <option value="205">سمك سلمون (100 جم)</option>
+                                    <option value="116">سمك أبيض / بلطي (100 جم)</option>
+                                    <option value="155">بيض (2 بيضة كبيرة)</option>
+                                    <option value="98">جبنة قريش (100 جم)</option>
+                                    <option value="130">تونة مصفاة (100 جم)</option>
+                                </optgroup>
+                                <optgroup label="نشويات">
+                                    <option value="130">أرز أبيض مطبوخ (100 جم)</option>
+                                    <option value="370">شوفان (100 جم)</option>
+                                    <option value="86">بطاطس مسلوقة (100 جم)</option>
+                                    <option value="131">مكرونة مسلوقة (100 جم)</option>
+                                    <option value="260">خبز بلدي/أسمر (رغيف صغير)</option>
+                                    <option value="70">توست بني (شريحة)</option>
+                                </optgroup>
+                                <optgroup label="خضار وفاكهة">
+                                    <option value="89">موز (واحدة متوسطة)</option>
+                                    <option value="52">تفاح (واحدة متوسطة)</option>
+                                    <option value="47">برتقال (واحدة متوسطة)</option>
+                                    <option value="15">خيار (100 جم)</option>
+                                    <option value="18">طماطم (100 جم)</option>
+                                    <option value="25">سلطة خضراء (طبق كبير)</option>
+                                </optgroup>
+                                <optgroup label="دهون صحية">
+                                    <option value="119">زيت زيتون (ملعقة كبيرة)</option>
+                                    <option value="95">زبدة فول سوداني (ملعقة كبيرة)</option>
+                                    <option value="160">لوز (30 جم / حفنة)</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="food-qty">العدد / الكمية</label>
+                            <input type="number" id="food-qty" value="1" min="0.1" step="0.1">
+                            <small style="color:#aaa; font-size:0.7rem">اكتب 1 للكمية المحددة في القائمة، أو 2
+                                لضعفها</small>
+                        </div>
+                    </div>
+                    <button id="add-food-btn" class="calc-btn"
+                        style="background:#333; color:#fff; border:1px solid #555;">إضافة للوجبة +</button>
+
+                    <div class="meal-list" id="meal-list">
+                        <!-- Added items will appear here -->
+                    </div>
+
+                    <div class="meal-total">
+                        <span>إجمالي السعرات:</span>
+                        <span id="meal-total-calories">0</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="calculator-container" style="border:none; box-shadow:none; background:transparent;">
+            <div class="section-header">
+                <h2>عن GymFit</h2>
+                <div class="about-content">
+                    <p>
+                        مرحباً بك في <strong>GymFit</strong>، منصتك المتكاملة والمجانية لتحقيق أهدافك الصحية والبدنية.
+                        نسعى لتوفير أدوات دقيقة وسهلة الاستخدام تساعدك على فهم جسمك بشكل أفضل، سواء كنت ترغب في خسارة
+                        الوزن، زيادة الكتلة العضلية، أو مجرد الحفاظ على صحتك.
+                    </p>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <i class="fas fa-calculator"></i>
+                            <h3>دقة علمية</h3>
+                            <p>نعتمد على معادلات رياضية عالمية (مثل Mifflin-St Jeor و Navy Method) لضمان أدق النتائج.
+                            </p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-utensils"></i>
+                            <h3>أنظمة غذائية</h3>
+                            <p>نقدم اقتراحات لأنظمة غذائية مرنة تناسب احتياجاتك سواء للتنشيف، التضخيم، أو المحافظة.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-language"></i>
+                            <h3>محتوى عربي</h3>
+                            <p>صُمم هذا الموقع خصيصاً للمستخدم العربي، مع قوائم طعام محلية وشرح بسيط وواضح.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="social-links" style="margin-bottom: 20px;">
+            <a href="#" style="color: #ccc; margin: 0 10px; font-size: 1.2rem;"><i class="fab fa-facebook"></i></a>
+            <a href="#" style="color: #ccc; margin: 0 10px; font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
+            <a href="#" style="color: #ccc; margin: 0 10px; font-size: 1.2rem;"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p>جميع الحقوق محفوظة &copy; <span id="year">2026</span> GymFit</p>
+        <p style="font-size: 0.8rem; color: #777; margin-top: 5px;">Developed by <span
+                style="color:var(--primary-color)">Eng. Mostafa Shabana</span></p>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
